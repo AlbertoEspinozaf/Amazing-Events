@@ -12,7 +12,7 @@ function cards(eventos) {
         </div>
         <div class="content-card">
             <p>$ ${eventos[i].price}</p>
-            <a href="/details.html?id=${eventos[i].id}" class="card-link">Ver mas</a>
+            <a href="/details.html?id=${eventos[i]._id}" class="card-link">Ver mas</a>
         </div>
     </div>`
     }

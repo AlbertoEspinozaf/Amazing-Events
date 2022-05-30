@@ -1,13 +1,14 @@
-let id = 1
-let listaEventos = data.eventos;
-listaEventos.forEach(evento => evento.id = id++)
-let idParam = Number(location.search.split("=")[1]);
-console.log(idParam);
-let evento = listaEventos.find((evento) => evento.id == idParam);
-console.log(evento);
+async function run() {
+    try {
+        const data = await getData();
 
-let contenedorDetails = document.getElementById('eventoDetail')
-let card = `<div class="image-container">
+        let idParam = (location.search.split("=")[1]);
+        console.log(idParam);
+        let evento = data.events.find((evento) => evento._id == idParam);
+        console.log(evento);
+
+        let contenedorDetails = document.getElementById('eventoDetail')
+        let card = `<div class="image-container">
 <img src="${evento.image}" class="card-img-top" alt="fiesta de disfraces">
 </div>
 
@@ -25,5 +26,14 @@ let card = `<div class="image-container">
 </div>
 </div>`
 
-contenedorDetails.innerHTML = card;
+        contenedorDetails.innerHTML = card;
+
+    } catch (error) {
+        console.log(error);
+        alert(`Hubo un error en el servidor.`)
+    }
+}
+
+run();
+
 
